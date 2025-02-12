@@ -1,0 +1,12 @@
+Weather in {{ city }}:
+{%- if weather_data['temperature'] %}
+- Temperature: {{ weather_data['temperature'] }}
+{%- endif %}
+- Wind: {{ weather_data['wind'] }}
+- Condition: {{ weather_data['description'] }}
+{%- if weather_data["forecast"] %}
+Forecast:
+{%- for day in weather_data["forecast"] %}
+  Day {{ day['day'] }}: {{ day['temperature'] }}, Wind: {{ day['wind'] }}
+{%- endfor %}
+{%- endif %}
