@@ -13,6 +13,8 @@ def main():
     """
     The main function retrieves and displays the weather forecast for a given city
     using command-line arguments.
+    :param city: City name
+    :return: None
     """
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     logging.getLogger(__name__)

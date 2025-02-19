@@ -1,0 +1,3 @@
+[run]
+omit =
+    weather/__main__.py

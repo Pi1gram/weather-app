@@ -1,0 +1,52 @@
+---
+
+default:
+  tags:
+    - build-runner
+
+stages:
+  - validate
+  - pages
+
+validate:
+  stage: validate
+  image: python:3.13-slim
+  script:
+    - python --version
+    - pip install virtualenv
+    - virtualenv .venv
+    - source .venv/bin/activate
+    - pip install --upgrade pip
+    - pip install --upgrade --requirement requirements.txt
+    - pip --version
+    - pip list --local
+    # Check formatting (without modifying code)
+    - ruff format --check
+    - sort-requirements --check requirements.txt
+    # Linting
+    - ruff check --output-format gitlab --output-file public/ruff-report.json
+    # Run all tests in repo
+    - pytest weather/tests/ 
+      --junitxml=public/pytest_report.xml 
+      --html=public/pytest_report.html --self-contained-html 
+      --cov=. --cov-report=xml --cov-report=html:public/coverage --cov-config=.coveragerc
+    # Generate documentation
+    - pdoc weather !weather.tests --output-dir public
+  artifacts:
+    paths:
+      - public
+  cache:
+    key: $CI_COMMIT_BRANCH
+    paths:
+      - .venv  # Cache the virtual environment
+      - .cache/pip # Cache the pip cache
+    policy: pull-push  # Pull existing cache before running, push updates after
+
+pages:
+  stage: pages
+  image: alpine
+  script:
+    - echo Publishing GitLab Pages ...
+  artifacts:
+    paths:
+      - public
