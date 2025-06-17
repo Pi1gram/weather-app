@@ -33,16 +33,19 @@ jobs:
 
       - name: Check formatting
         run: |
+          source .venv/bin/activate
           ruff format --check
           sort-requirements --check requirements.txt
 
       - name: Linting
         run: |
+          source .venv/bin/activate
           mkdir -p public
           ruff check --output-format=github --output-file=public/ruff-report.json .
 
       - name: Run tests
         run: |
+          source .venv/bin/activate
           mkdir -p public
           pytest weather/tests/ \
             --junitxml=public/pytest_report.xml \
@@ -51,6 +54,7 @@ jobs:
 
       - name: Generate documentation
         run: |
+          source .venv/bin/activate
           pdoc weather !weather.tests --output-dir public
 
       - name: Upload test and coverage artifacts
