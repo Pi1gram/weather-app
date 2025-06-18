@@ -78,6 +78,7 @@ By combining all tasks into a single `validate` stage, the pipeline becomes simp
 ### Reports
 
 - [Wiki](https://gitlab.com/theMarloGroup/training/students/jbhasin/initial/-/wikis/home)
-- [API](https://themarlogroup.gitlab.io/training/students/jbhasin/initial)
-- [Coverage](https://themarlogroup.gitlab.io/training/students/jbhasin/initial/coverage/index.html)
-- [Test](https://themarlogroup.gitlab.io/training/students/jbhasin/initial/pytest_report.html)
+- [API](https://pi1gram.github.io/weather-app/)
+- [Coverage](https://pi1gram.github.io/weather-app/coverage/index.html)
+- [Test](https://pi1gram.github.io/weather-app/pytest_report.html)
+
