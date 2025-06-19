@@ -18,8 +18,7 @@ To install the project dependencies, follow these steps:
 ### Clone the repository
 
 ```sh
-git clone https://gitlab.com/theMarloGroup/training/jbhasin/intern_project.git
-cd intern_project
+git clone git@github.com:Pi1gram/weather-app.git
 ```
 
 ### Create and activate a virtual environment
@@ -47,7 +46,7 @@ python3 -m weather [city]
 
 ## GitLab CI/CD Pipeline
 
-This project uses GitLab CI/CD to automate the process of linting, testing, and validating the code. The pipeline is defined in the `.gitlab-ci.yml` file and consists of a single stage called `validate`.
+This project uses GitHubs Actions to automate the process of linting, testing, and validating the code. The pipeline is defined in the `main.yml` file and consists of a single stage called `validate`.
 
 ### Pipeline Stages
 
